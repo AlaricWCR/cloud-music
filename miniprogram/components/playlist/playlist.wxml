@@ -1,5 +1,4 @@
-<!--components/chatroom/playlist/playlist.js.wxml-->
-<view class="playlist-container">
+<view class="playlist-container" bind:tap="goToMusiclist">
   <image src='{{playlist.coverImgUrl}}' class="playlist-img"></image>
   <text class="playlist-playcount">{{_count}}</text>
   <view class="playlist-name">{{playlist.name}}</view>

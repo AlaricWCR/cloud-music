@@ -3,7 +3,9 @@
     "pages/music/music",
     "pages/find/find",
     "pages/profile/profile",
+    "pages/musiclist/musiclist",
     "pages/test/test"
+    
   ],
   "requiredBackgroundModes": [
     "audio"
@@ -28,12 +30,14 @@
       {
         "pagePath": "pages/find/find",
         "text": "发现",
-        "iconPath": "images/tab/find-actived.png"
+        "iconPath": "images/tab/find.png",
+        "selectedIconPath": "images/tab/find-actived.png"
       },
       {
         "pagePath": "pages/profile/profile",
         "text": "我的",
-        "iconPath": "images/tab/profile-actived.png"
+        "iconPath": "images/tab/profile.png",
+        "selectedIconPath": "images/tab/profile-actived.png"
       }
     ]
   },

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wcr-musiclist": "/components/musiclist/musiclist"
+  },
+  "navigationBarTitleText": "歌曲"
+}
