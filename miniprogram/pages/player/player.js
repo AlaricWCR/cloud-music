@@ -1,14 +1,13 @@
-// pages/musiclist/musiclist.js
+let musiclist = []
+// 正在播放的歌曲index
+let playingIndex = 0
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    //歌曲列表
-    musiclist: [],
-    //歌单信息（支取了封面图和歌单名称）
-    listInfo: {},
+    picUrl: ''
   },
 
   /**
@@ -16,33 +15,32 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    wx.showLoading({
-      title: '加载中',
+    console.log(options.musicId,typeof (options.musicId))
+    playingIndex = options.index
+    musiclist = wx.getStorageSync('musiclist')
+    this._loadMusicDetail(options.musicId)
+  },
+
+
+  _loadMusicDetail(musicId){
+    let music = musiclist[playingIndex]
+    console.log(music)
+    wx.setNavigationBarTitle({
+      title: music.name,
+    })
+
+    this.setData({
+      picUrl : music.al.picUrl
     })
     wx.cloud.callFunction({
       name: 'music',
       data: {
-        playlistId: options.playlistId,
-        $url: 'musiclist'
+        musicId,
+        $url: 'musicUrl'
       }
     }).then((res) => {
-      console.log(res.result)
-      const pl = res.result.playlist
-      this.setData({
-        musiclist: pl.tracks,
-        listInfo: {
-          coverImgUrl: pl.coverImgUrl,
-          name: pl.name,
-        }
-      })
-      this._setMusiclist()
-      wx.hideLoading()
+      console.log(res)        
     })
-  },
-
-  _setMusiclist() {
-    //将本歌单的歌曲列表存入本地存储
-    wx.setStorageSync('musiclist', this.data.musiclist)
   },
 
   /**
