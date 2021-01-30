@@ -10,7 +10,7 @@ const TcbRouter = require('tcb-router')
 // 引入axios
 const axios = require('axios')
 // 定义基础URL，修改你自己的穿透地址！！！
-const BASE_URL = 'https://wxwyy.cn.utools.club'
+const BASE_URL = 'http://47.98.169.198:3000'
 
 
 // 云函数入口函数
@@ -40,6 +40,7 @@ exports.main = async (event, context) => {
 
   //根据歌曲id获取歌曲播放的url
   app.router('musicUrl', async (ctx, next) => {
+    console.log(`${BASE_URL}/song/url?id=${event.musicId}`)
     const res = await axios.get(`${BASE_URL}/song/url?id=${event.musicId}`)
     ctx.body = res.data
   })
