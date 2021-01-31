@@ -1,5 +1,5 @@
 let musiclist = []
-// 正在播放的歌曲index
+// 当前正在播放的歌曲index
 let playingIndex = 0
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({

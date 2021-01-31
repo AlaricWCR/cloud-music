@@ -44,7 +44,7 @@
   position: absolute;
   top: -158rpx;
   left: 266rpx;
-  background: url('http://alaric-soft.oss-cn-shanghai.aliyuncs.com/my-music/needle.png') no-repeat center/contain;
+  background: url('http://alaric-soft.oss-cn-shanghai.aliyuncs.com/my-music/zhen.png') no-repeat center/contain;
   transform: rotate(-15deg);
   transform-origin: 24rpx 10rpx;
   transition: transform 0.8s ease;
