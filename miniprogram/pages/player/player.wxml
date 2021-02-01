@@ -10,6 +10,12 @@
     <image class="player-img zhuan {{isPlaying?'zhuan':'ting'}}" src="{{picUrl}}"></image>
   </view>
 
+  <!-- 进度条 -->
+  <view class="progress-bar">
+  <wcr-progress-bar bind:musicEnd="onNext"/>
+  </view>
+
+
   <!-- 控制面板 -->
   <view class="control">
     <text class="iconfont icon-hanhan-01-01" bind:tap="onPrev"></text>
