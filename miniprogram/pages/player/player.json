@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "wcr-progress-bar" :  "/components/progress-bar/progress-bar"
-  }
+    "wcr-progress-bar" :  "/components/progress-bar/progress-bar",
+    "wcr-lyric": "/components/lyric/lyric"
+  },
+  "disableScroll":true
 }

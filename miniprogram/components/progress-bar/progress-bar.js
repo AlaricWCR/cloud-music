@@ -106,9 +106,9 @@ Component({
         const duration = backgroundAudioManager.duration
         const currentTime = backgroundAudioManager.currentTime
         const sec = currentTime.toString().split(',')[0]
-        console.log(sec)
+        // console.log(sec)
         if(sec != currentSec) {
-          console.log(currentTime)
+          // console.log(currentTime)
           const currentTimeFmt = this._timeFormat(currentTime)
           this.setData({
           distance: (movableAreaWidth - movableViewWidth) * currentTime / duration,
@@ -116,6 +116,10 @@ Component({
           ['showTime.currentTime'] : `${currentTimeFmt.min}:${currentTimeFmt.sec}`
         })
         currentSec = sec
+        // 联动歌词
+        this.triggerEvent('timeUpdate', {
+          currentTime
+        })
        }
       }
       })

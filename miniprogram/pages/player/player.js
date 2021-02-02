@@ -9,7 +9,11 @@ Page({
    */
   data: {
     picUrl: '',
-    isPlaying:false
+    isPlaying:false,
+    name: '',
+    singer: '',
+    isLyricShow: false,
+    lyric: '传给歌词组件的歌词',
   },
 
   /**
@@ -27,13 +31,20 @@ Page({
 
   _loadMusicDetail(musicId){
     let music = musiclist[playingIndex]
-    console.log(music)
+    // console.log(music)
     wx.setNavigationBarTitle({
       title: music.name,
     })
 
     this.setData({
-      picUrl : music.al.picUrl
+      picUrl : music.al.picUrl,
+      title: music.name,
+      singer: music.ar[0].name
+    })
+
+    //请求歌曲播放链接
+    wx.showLoading({
+      title: '歌曲加载中',
     })
     wx.cloud.callFunction({
       name: 'music',
@@ -42,7 +53,7 @@ Page({
         $url: 'musicUrl'
       }
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       const url = res.result.data[0].url
       if(url === null){
         wx.showToast({
@@ -61,6 +72,26 @@ Page({
       this.setData({
         isPlaying: true
       })
+      wx.hideLoading()
+      //请求歌词
+      wx.cloud.callFunction({
+        name: 'music',
+        data: {
+          musicId,
+          $url: 'lyric',
+        }
+      }).then((res) => {
+        console.log(res)
+
+        let lyric = '暂无歌词'
+        const lrc = res.result.lrc
+        if (lrc) {
+          lyric = lrc.lyric
+        }
+        this.setData({
+          lyric
+        })
+      })
     })
   },
 
@@ -75,9 +106,18 @@ Page({
     })
   },
 
+  onLyricShow(){
+    this.setData({
+      isLyricShow: !this.data.isLyricShow
+    })
+  },
+  timeUpdate(event) {
+    this.selectComponent('.lyric').update(event.detail.currentTime)
+  },
+
   onPrev(){
     playingIndex--
-    if(playingIndex === musiclist.length){
+    if(playingIndex < 0){
       playingIndex = musiclist.length - 1
     }
     this._loadMusicDetail(musiclist[playingIndex].id)
