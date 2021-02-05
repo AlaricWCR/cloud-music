@@ -1,1 +1,10 @@
-/* pages/find/find.wxss */
+.header {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: #454545;
+}

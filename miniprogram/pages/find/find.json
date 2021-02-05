@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "my-card":"/components/card/card"
+    "wcr-search":"/components/search/search"
   },
   "navigationBarTitleText":"发现"
 }

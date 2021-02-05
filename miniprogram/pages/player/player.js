@@ -82,7 +82,6 @@ Page({
         }
       }).then((res) => {
         console.log(res)
-
         let lyric = '暂无歌词'
         const lrc = res.result.lrc
         if (lrc) {

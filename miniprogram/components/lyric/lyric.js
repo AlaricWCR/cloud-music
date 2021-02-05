@@ -12,7 +12,7 @@ Component({
   },
   observers: {
     lyric(lrc) {
-      if(lrc == '暂无歌词'){
+      if(lrc === '暂无歌词'){
         this.setData({
           lyrics: [{
             lrc,

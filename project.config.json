@@ -78,6 +78,12 @@
           "pathName": "pages/player/player",
           "query": "musicId=247187&index=0",
           "scene": null
+        },
+        {
+          "name": "find",
+          "pathName": "pages/find/find",
+          "query": "musicId=247187&index=0",
+          "scene": null
         }
       ]
     }
