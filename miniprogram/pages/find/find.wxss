@@ -8,3 +8,9 @@
   align-items: center;
   background-color: #454545;
 }
+
+.container {
+  margin-top: 10rpx;
+  box-sizing: border-box;
+  height: 100vh;
+}

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "wcr-search":"/components/search/search"
+    "wcr-search":"/components/search/search",
+    "wcr-login": "/components/login/login"
   },
   "navigationBarTitleText":"发现"
 }

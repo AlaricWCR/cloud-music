@@ -11,3 +11,8 @@
     <wcr-search bind:search="onSearch"/>
   </view>
 </view>
+
+<scroll-view class="container" scrpll-y>
+  <!-- 底部弹出层 -->
+  <wcr-login modalShow="{{modalShow}}" bind:loginsuccess="onLoginSuccess" bind:loginfail="onloadinFail"></wcr-login>
+</scroll-view>
