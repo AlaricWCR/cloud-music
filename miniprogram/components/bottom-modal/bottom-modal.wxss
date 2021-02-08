@@ -23,7 +23,7 @@
   /* 为了增加点击区域大小 */
 }
 
-.modal .panel .icon-baseline-close-px {
+.modal .panel .icon-guanbi {
   position: absolute;
   right: 10rpx;
   top: 10rpx;

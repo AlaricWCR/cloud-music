@@ -1,18 +1,18 @@
 let keyword = '' //搜索关键字
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
       // 控制底部弹出层是否显示
       modalShow: false,
+      // 博客数组
+      blogList: [],
   },
   onSearch(event) {
       keyword = event.detail.keyword
       console.log(keyword)
     },
-    onLoad(options) {},
+    onLoad(options) {
+      this._loadBlogList()
+    },
     onPublish() {
       // 获取用户当前设置。返回值中只会出现小程序已经向用户请求过的权限，
       // 根据是否具有scope。userInfo属性，判断用户是否授权
@@ -37,17 +37,43 @@ Page({
       })
     },
     onLoginSuccess(event) {
-      console.log('>>>>>' + event)
+      // console.log('>>>>>' + event)
       const detail = event.detail
-      console.log(detail.nickName)
+      // console.log(detail.nickName)
       wx.navigateTo({
-        url: '../publish/publish',
+        url: `../publish/publish?nickName=${detail.nickName}&avatarUrl=${detail.avatarUrl}`,
       })
     },
     onLoginFail() {
       wx.showModal({
         title: '授权用户才能发布',
         content: '',
+      })
+    },
+    onPullDownRefresh: function () {
+      this.setData({
+        blogList:[]
+      })
+      this._loadBlogList(0)
+    },
+    _loadBlogList(start = 0) {
+      wx.showLoading({
+        title: '数据加载中',
+      })
+      wx.cloud.callFunction({
+        name: 'blog',
+        data: {
+          start,
+          count: 10,
+          $url: 'list',
+        }
+      }).then((res) => {
+        console.log(res)
+        this.setData({
+          blogList: this.data.blogList.concat(res.result)
+        })
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
       })
     },
   /**

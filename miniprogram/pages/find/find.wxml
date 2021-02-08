@@ -2,17 +2,26 @@
 <navigation showIcon='{{false}}' title='发现'></navigation>
 <!-- 顶部搜索区 -->
 <view class="header">
-  <view class="left" bind:tap="onPublish">
+  <view class="publish-container" bind:tap="onPublish">
     <!-- 左侧的发布图标 -->
-    <i class="iconfont icon-zhenhuichongtubiaozhizuo-kuozhan-"></i>
+    <i class="iconfont icon-release-1-copy"></i>
   </view>
-  <view class="right">
+  <view class="search-container">
     <!-- 引入搜索组件，接收子组件回传的search方法 -->
     <wcr-search bind:search="onSearch"/>
   </view>
 </view>
 
-<scroll-view class="container" scrpll-y>
+<!-- 博客卡片列表 -->
+<veiw class="container">
+  <block wx:for="{{blogList}}" wx:key="_id">
+    <view class="blog-panel">
+      <wcr-blog-card blog="{{item}}" data-blogid="{{item._id}}" bind:tap="goComment" />
+    </view>
+  </block>
+</veiw>
+
+<scroll-view class="container" scroll-y>
   <!-- 底部弹出层 -->
   <wcr-login modalShow="{{modalShow}}" bind:loginsuccess="onLoginSuccess" bind:loginfail="onloadinFail"></wcr-login>
 </scroll-view>

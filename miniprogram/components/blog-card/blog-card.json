@@ -1,8 +1,9 @@
 {
+  "component": true,
   "usingComponents": {
-    "wcr-search":"/components/search/search",
+    "wcr-search": "/components/search/search",
     "wcr-login": "/components/login/login",
     "wcr-blog-card": "/components/blog-card/blog-card"
   },
-  "navigationBarTitleText":"发现"
+  "enablePullDownRefresh": true
 }

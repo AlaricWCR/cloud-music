@@ -5,8 +5,8 @@
     "pages/profile/profile",
     "pages/musiclist/musiclist",
     "pages/player/player",
-    "pages/test/test"
-    
+    "pages/test/test",
+    "pages/publish/publish"
   ],
   "requiredBackgroundModes": [
     "audio"
@@ -17,7 +17,6 @@
     "navigationBarBackgroundColor": "#d43c33",
     "navigationBarTitleText": "云音乐",
     "navigationBarTextStyle": "white"
-    
   },
   "tabBar": {
     "color": "#474747",

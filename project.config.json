@@ -18,7 +18,7 @@
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
-    "compileHotReLoad": true,
+    "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
     "useApiHostProcess": false,
@@ -83,6 +83,11 @@
           "name": "find",
           "pathName": "pages/find/find",
           "query": "musicId=247187&index=0",
+          "scene": null
+        },
+        {
+          "name": "publish",
+          "pathName": "pages/publish/publish",
           "scene": null
         }
       ]
